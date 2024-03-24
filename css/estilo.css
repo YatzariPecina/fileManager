@@ -33,8 +33,7 @@ body {
 }
 
 #contenedorSession {
-    border: black solid 1px;
-    height: calc(100vh - 65px);
+    height: calc(100vh - 140px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,6 +94,12 @@ body {
 
 .boton>button:hover {
     background-color: rgb(181, 134, 224);
+}
+.mensaje{
+    padding: 20px;
+    font-size: 30px;
+    color: red;
+    font-weight: 600;
 }
 
 @media screen and (max-width: 768px) {
