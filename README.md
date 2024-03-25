@@ -42,5 +42,4 @@ Modifique el archivo "config.php" con las rutas correctas para su caso.
 > Entregables
 
 - Archivo ZIP con los archivos del proyecto
-
 - URL donde estará disponible la aplicación (porque debe estar en un hosting)
