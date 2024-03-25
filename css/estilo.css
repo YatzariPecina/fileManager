@@ -101,6 +101,17 @@ body {
     color: red;
     font-weight: 600;
 }
+#contenedorArchivos h2{
+    padding: 10px;
+}
+.listaArchivos{
+    border: black solid 1px;
+    border-collapse: collapse;
+}
+.listaArchivos th, .listaArchivos td{
+    border: black solid 1px;
+    padding: 5px;
+}
 
 @media screen and (max-width: 768px) {
     #contenedorSession>form {

@@ -13,11 +13,27 @@
 
 <body>
     <div class="nav">
-        <label for="">Inciar sesion</label>
+        <label for="usuario">
+            <?php
+
+            ?>
+        </label>
         <img src="./img/account_avatar.svg" alt="">
     </div>
     <div id="contenedorArchivos">
         <h2>ADMINISTRADOR DE ARCHIVOS</h2>
+        <table class="listaArchivos">
+            <tr>
+                <th>Nombre del archivo</th>
+                <th>Tamaño</th>
+                <th>Acciones</th>
+            </tr>
+            <tr>
+                <td><a href="https://www.youtube.com/watch?v=PQHzOMwHr3w" target="_blank" rel="noopener noreferrer">Elmariana</a></td>
+                <td>324K</td>
+                <td><button>Eliminar</button></td>
+            </tr>
+        </table>
     </div>
 </body>
 
