@@ -7,7 +7,7 @@ function autenticarUsuario(event) {
     event.preventDefault();
 
     $.ajax({
-        url: 'login.php',
+        url: './php/login.php',
         type: 'POST',
         data: {
             username: username.value,
