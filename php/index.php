@@ -7,8 +7,13 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
     $nombreArchivos = array();
 
     foreach ($archivos as $archivo) {
-        if (is_file(DIR_UPLOAD . "/" . $archivo)) {
-            $nombreArchivos[] = $archivo;
+        if (is_file(DIR_UPLOAD .  $archivo)) {
+            $size = filesize(DIR_UPLOAD . $archivo);
+
+            $nombreArchivos[] = array(
+                "nombre" => $archivo,
+                "size" => $size
+            );
         }
     }
 

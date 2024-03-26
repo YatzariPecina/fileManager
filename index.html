@@ -13,13 +13,15 @@
 
 <body>
     <div class="nav">
-        <label for="usuario" id="nombreUsuario">Iniciar sesion</label>
+        <div id="clickedSession" class="session">
+            <label for="usuario" id="nombreUsuario">Iniciar sesion</label>
+        </div>
         <img src="./img/account_avatar.svg" alt="">
     </div>
     <div id="contenedorArchivos">
         <h2>ADMINISTRADOR DE ARCHIVOS</h2>
         <table class="listaArchivos" id="tablaArchivos">
-            <tr>
+            <tr id="encabezado">
                 <th>Nombre del archivo</th>
                 <th>Tamaño</th>
                 <th>Acciones</th>
