@@ -8,11 +8,10 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 
     foreach ($archivos as $archivo) {
         if (is_file(DIR_UPLOAD .  $archivo)) {
-            $size = filesize(DIR_UPLOAD . $archivo);
 
             $nombreArchivos[] = array(
                 "nombre" => $archivo,
-                "size" => $size
+                "size" => round(filesize(DIR_UPLOAD . $archivo) / 1024, 2)
             );
         }
     }

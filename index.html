@@ -18,14 +18,21 @@
         </div>
         <img src="./img/account_avatar.svg" alt="">
     </div>
-    <div id="contenedorArchivos">
-        <h2>ADMINISTRADOR DE ARCHIVOS</h2>
-        <table class="listaArchivos" id="tablaArchivos">
-            <tr id="encabezado">
-                <th>Nombre del archivo</th>
-                <th>Tamaño</th>
-            </tr>
-        </table>
+    <div class="contenedor">
+        <div id="contenedorArchivos">
+            <h2>ADMINISTRADOR DE ARCHIVOS</h2>
+            <table class="listaArchivos" id="tablaArchivos">
+                <tr id="encabezado">
+                    <th>Nombre del archivo</th>
+                    <th>Tamaño</th>
+                    <th>Borrar</th>
+                </tr>
+            </table>
+        </div>
+        <div class="subirArchivos">
+            <input type="text" id="nombreArchivo">
+            <button onclick="subirArchivo()">Subir Archivo</button>
+        </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/index.js"></script>

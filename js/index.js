@@ -24,8 +24,9 @@ function actualizarTabla() {
                 //Nueva fila
                 var newRow = $("<tr>");
 
-                newRow.append('<td><a href="./php/archivo.php?nombre=' + archivo.nombre + '" target="_blank" rel="noopener noreferrer">' + archivo.nombre + '</a></td>');
-                newRow.append("<td>" + archivo.size + "<td>");
+                newRow.append('<td><a href="./php/archivo.php?nombre=' + archivo.nombre + '" target="_blank">' + archivo.nombre + '</a></td>');
+                newRow.append("<td>" + archivo.size + "Kb</td>");
+                newRow.append("<td></td>")
 
                 //Insertar fila despeus de fila encabezado
                 filaEncabezado.after(newRow);
