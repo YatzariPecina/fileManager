@@ -5,6 +5,7 @@ const tabla = document.getElementById('tablaArchivos');
 
 $(document).ready(function(){
     mostrarUsuario();
+    actualizarTabla();
 });
 
 function actualizarTabla() {
@@ -12,6 +13,7 @@ function actualizarTabla() {
         url: "./php/index.php",
         type: "GET",
         success: function (response) {
+            console.log(response);
             var filaEncabezado = $('#encabezado');
 
             //Reiniciar toda lo que esta en la tabla despues del encabezado
@@ -19,7 +21,14 @@ function actualizarTabla() {
 
             //Iterar en la respuesta json
             $.each(response, function (index, archivo) { 
-                 
+                //Nueva fila
+                var newRow = $("<tr>");
+
+                newRow.append('<td><a href="./php/archivo.php?nombre=' + archivo.nombre + '" target="_blank" rel="noopener noreferrer">' + archivo.nombre + '</a></td>');
+                newRow.append("<td>" + archivo.size + "<td>");
+
+                //Insertar fila despeus de fila encabezado
+                filaEncabezado.after(newRow);
             });
         }
     });

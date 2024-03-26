@@ -7,7 +7,7 @@ define("APP_ROOT", "/xampp/Practica6/");
 define("APP_PATH", "C:/xampp/htdocs/xampp/Practica6/");
 
 // Directorio donde se van a subir los archivos
-define("DIR_UPLOAD", "C:/xampp/htdocs/xampp/Practica6/archivos");
+define("DIR_UPLOAD", "C:/xampp/htdocs/xampp/Practica6/archivos/");
 
 // Extensiones de archivos con su correspondiente content-type.
 $CONTENT_TYPES_EXT = [
