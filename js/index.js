@@ -7,12 +7,14 @@ const mensaje = document.getElementById('mensaje');
 const file = document.getElementById('file');
 const nombreArchivo = document.getElementById('nombreArchivo');
 
+var esAdmin = false;
+
 $(document).ready(function () {
     mostrarUsuario();
     actualizarTabla();
 
     // Asignar evento clic a los botones "Borrar" en cada fila
-    $(document).on('click', '.borrar-archivo', function() {
+    $(document).on('click', '.borrar-archivo', function () {
         // Obtener el nombre del archivo a borrar y mostrar el mensaje de confirmación
         var nombreArchivo = $(this).closest('tr').find('td:first').text();
         if (confirm("¿Está seguro que desea borrar " + nombreArchivo + "?")) {
@@ -28,14 +30,14 @@ function borrarArchivo(nombreArchivo, fila) {
     $.ajax({
         url: './php/index.php',
         type: 'POST',
-        data: { nombreArchivo: nombreArchivo },
-        success: function(response) {
+        data: { nombreFile: nombreArchivo },
+        success: function (response) {
             // Si la eliminación es exitosa, eliminar la fila de la tabla
             fila.remove();
             // Mostrar mensaje de éxito
             alert("Archivo " + nombreArchivo + " eliminado correctamente.");
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             // Mostrar mensaje de error
             alert("Error al intentar borrar el archivo: " + error);
         }
@@ -47,7 +49,7 @@ function actualizarTabla() {
         url: "./php/index.php",
         type: "GET",
         success: function (response) {
-            console.log(response);
+
             var filaEncabezado = $('#encabezado');
 
             // Limpiar todas las filas después del encabezado
@@ -65,6 +67,10 @@ function actualizarTabla() {
                 // Insertar fila después de la fila encabezado
                 filaEncabezado.after(newRow);
             });
+
+            if(esAdmin){
+                isAdmin();
+            }
         }
     });
 }
@@ -84,6 +90,11 @@ function mostrarUsuario() {
                 contenedorUsuario.onclick = function () {
                     cerrarSesion();
                 };
+
+                esAdmin = response.esAdmin;
+                if (esAdmin) {
+                    isAdmin();
+                }
             }
         }
     });
@@ -135,4 +146,17 @@ function subirArchivo() {
             $('#mensaje').text('Error al subir el archivo: ' + error);
         }
     });
+}
+
+function isAdmin() {
+    var subirArchivos = document.querySelector('.subirArchivos');
+    var botonesBorrarArchivo = document.querySelectorAll('.borrar-archivo');
+
+    // Iterar sobre todos los elementos y cambiar el estilo a "display: flex"
+    botonesBorrarArchivo.forEach(function (boton) {
+        boton.style.display = 'flex';
+    });
+
+    // Cambiar el estilo a "display: flex"
+    subirArchivos.style.display = 'flex';
 }

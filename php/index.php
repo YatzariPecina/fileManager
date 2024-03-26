@@ -23,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["nombreArchivo"])) {
-        $nombreArchivo = $_POST["nombreArchivo"];
+    if (isset($_POST["nombreFile"])) {
+        $nombreArchivo = $_POST["nombreFile"];
         $rutaArchivo = DIR_UPLOAD . $nombreArchivo;
 
         // Verificar si el archivo existe
