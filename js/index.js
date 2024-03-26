@@ -3,10 +3,44 @@ const labelUsuario = document.getElementById('nombreUsuario');
 const contenedorUsuario = document.getElementById('clickedSession');
 const tabla = document.getElementById('tablaArchivos');
 
-$(document).ready(function(){
+const mensaje = document.getElementById('mensaje');
+const file = document.getElementById('file');
+const nombreArchivo = document.getElementById('nombreArchivo');
+
+$(document).ready(function () {
     mostrarUsuario();
     actualizarTabla();
+
+    // Asignar evento clic a los botones "Borrar" en cada fila
+    $(document).on('click', '.borrar-archivo', function() {
+        // Obtener el nombre del archivo a borrar y mostrar el mensaje de confirmación
+        var nombreArchivo = $(this).closest('tr').find('td:first').text();
+        if (confirm("¿Está seguro que desea borrar " + nombreArchivo + "?")) {
+            // Si se confirma la eliminación, llamar a la función para borrar el archivo
+            var fila = $(this).closest('tr');
+            borrarArchivo(nombreArchivo, fila);
+        }
+    });
 });
+
+function borrarArchivo(nombreArchivo, fila) {
+    // Realizar solicitud AJAX para borrar el archivo del servidor
+    $.ajax({
+        url: './php/index.php',
+        type: 'POST',
+        data: { nombreArchivo: nombreArchivo },
+        success: function(response) {
+            // Si la eliminación es exitosa, eliminar la fila de la tabla
+            fila.remove();
+            // Mostrar mensaje de éxito
+            alert("Archivo " + nombreArchivo + " eliminado correctamente.");
+        },
+        error: function(xhr, status, error) {
+            // Mostrar mensaje de error
+            alert("Error al intentar borrar el archivo: " + error);
+        }
+    });
+}
 
 function actualizarTabla() {
     $.ajax({
@@ -16,38 +50,38 @@ function actualizarTabla() {
             console.log(response);
             var filaEncabezado = $('#encabezado');
 
-            //Reiniciar toda lo que esta en la tabla despues del encabezado
-            filaEncabezado.nextAll().remove;
+            // Limpiar todas las filas después del encabezado
+            filaEncabezado.nextAll().remove();
 
-            //Iterar en la respuesta json
-            $.each(response, function (index, archivo) { 
-                //Nueva fila
+            // Iterar en la respuesta JSON
+            $.each(response, function (index, archivo) {
+                // Nueva fila
                 var newRow = $("<tr>");
 
                 newRow.append('<td><a href="./php/archivo.php?nombre=' + archivo.nombre + '" target="_blank">' + archivo.nombre + '</a></td>');
                 newRow.append("<td>" + archivo.size + "Kb</td>");
-                newRow.append("<td></td>")
+                newRow.append('<td><button class="borrar-archivo">Borrar</button></td>');
 
-                //Insertar fila despeus de fila encabezado
+                // Insertar fila después de la fila encabezado
                 filaEncabezado.after(newRow);
             });
         }
     });
 }
 
-function mostrarUsuario(){
+function mostrarUsuario() {
     $.ajax({
         url: "./php/login.php",
         type: "GET",
-        success: function (response){
+        success: function (response) {
             console.log(response);
-            if(response == "401"){
+            if (response == "401") {
                 //Variable para regresar al login
                 window.location.href = "login.html";
-            }else{
+            } else {
                 //Mandar el nombre a la ventana
                 labelUsuario.innerHTML = "Cerrar sesion";
-                contenedorUsuario.onclick = function(){
+                contenedorUsuario.onclick = function () {
                     cerrarSesion();
                 };
             }
@@ -55,15 +89,50 @@ function mostrarUsuario(){
     });
 }
 
-function cerrarSesion(){
+function cerrarSesion() {
     $.ajax({
         url: './php/login.php',
         type: 'POST',
-        data: { logout : true},
-        success: function (response){
-            if(response == "200"){
+        data: { logout: true },
+        success: function (response) {
+            if (response == "200") {
                 window.location.href = "./login.html";
             }
+        }
+    });
+}
+
+function subirArchivo() {
+    var archivo = document.getElementById('file').files[0];
+    var nombreArchivo = document.getElementById('nombreArchivo').value;
+
+    // Si no se ha seleccionado un archivo
+    if (!archivo) {
+        alert('Selecciona un archivo');
+        return;
+    }
+
+    // Verificar si el nombre del archivo está vacío
+    if (!nombreArchivo.trim()) {
+        nombreArchivo = archivo.name;
+    }
+
+    var formData = new FormData();
+    formData.append('nombreArchivo', nombreArchivo);
+    formData.append('archivo', archivo);
+
+    $.ajax({
+        url: './php/index.php',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            $('#mensaje').text(response);
+            actualizarTabla();
+        },
+        error: function (xhr, status, error) {
+            $('#mensaje').text('Error al subir el archivo: ' + error);
         }
     });
 }
