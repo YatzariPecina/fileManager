@@ -16,7 +16,7 @@ registroForm.addEventListener("submit", function (e) {
 
     console.log("Empieza proceso de registro");
     var formData = new FormData(this);
-    console.log(formData);
+    formData.delete('confirmacionPass');
 
     $.ajax({
         type: "POST",
@@ -26,6 +26,7 @@ registroForm.addEventListener("submit", function (e) {
         contentType: false,
         success: function (response) {
             console.log(response);
+            window.location.href = "login.html";
         }
     });
 
