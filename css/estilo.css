@@ -52,7 +52,8 @@ body {
     padding: 30px;
 }
 
-#contenedorSession>form h2 {
+#contenedorSession>form h2,
+#contenedorSession>form>a {
     text-align: center;
 }
 
@@ -95,50 +96,61 @@ body {
 .boton>button:hover {
     background-color: rgb(181, 134, 224);
 }
-.mensaje{
+
+.mensaje {
     padding: 20px;
     font-size: 30px;
     color: red;
     font-weight: 600;
 }
-#contenedorArchivos h2{
+
+#contenedorArchivos h2 {
     padding: 10px;
 }
-.listaArchivos{
+
+.listaArchivos {
     border: black solid 1px;
     border-collapse: collapse;
 }
-.listaArchivos th, .listaArchivos td{
+
+.listaArchivos th,
+.listaArchivos td {
     padding: 10px;
     border: black solid 1px;
     padding: 5px;
 }
-a{
+
+a {
     color: black;
     text-decoration: none;
 }
-a:hover{
+
+a:hover {
     text-decoration: underline;
 }
-.contenedor{
+
+.contenedor {
     padding: 10px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
-.contenedorArchivos{
+
+.contenedorArchivos {
     padding: 10px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.subirArchivos{
+
+.subirArchivos {
     display: none;
     padding: 10px 20px;
     flex-direction: column;
 }
-.borrar-archivo{
+
+.borrar-archivo {
     background-color: red;
     font-weight: bold;
     padding: 5px 20px;
@@ -147,8 +159,54 @@ a:hover{
     border: 0;
 }
 
+.bodyRegister{
+    padding: 3% 10%;
+}
+.contenedorRegister{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: white;
+    border: solid black 1px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.contenedorRegister h1{
+    width: 100%;
+    text-align: center;
+    padding: 0 0 20px 0;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.cardLeft{
+    border: solid black 1px;
+}
+.cardRight{
+    border: solid black 1px;
+}
+.cardLeft, .cardRight{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    border: solid black 1px;
+    padding: 10px;
+}
+.cardLeft label, .cardRight label{
+    padding: 5px 0 10px 0;
+}
+.cardLeft input:focus, .cardRight input:focus{
+    outline: none;
+}
+
 @media screen and (max-width: 768px) {
     #contenedorSession>form {
         width: calc(100% - 20vw);
+    }
+    .cardLeft, .cardRight{
+        width: 100%;
     }
 }

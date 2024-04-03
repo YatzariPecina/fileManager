@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File manager - inicio sesion</title>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="nav">
+        <label><a href="login.html">Inciar sesion</a></label>
+        <img src="./img/account_avatar.svg" alt="">
+    </div>
+    <div class="bodyRegister">
+        <div class="contenedorRegister">
+            <h1>REGISTRO</h1>
+            <form id="registroForm">
+                <div class="cards">
+                    <div class="cardLeft">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre">
+
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" id="apellidos">
+
+                        <label for="username">Correo del usuario:</label>
+                        <input type="text" id="username">
+
+                        <label for="password">Contraseña:</label>
+                        <input type="password" id="password">
+
+                        <label for="confirmacionPass">Confirmar el password:</label>
+                        <input type="password" id="confirmacionPass">
+                        <label id="estadoConfirm"></label>
+                    </div>
+                    <div class="cardRight">
+                        <label>Genero</label>
+                        <div>
+                            <input type="radio" name="genero" id="masculino">
+                            <label for="masculino">M</label>
+                            <input type="radio" name="genero" id="femenino">
+                            <label for="femenino">F</label>
+                            <input type="radio" name="genero" id="no_especificar">
+                            <label for="no_especificar">X</label>
+                        </div>
+
+                        <label for="fechaNac">Fecha de nacimiento:</label>
+                        <input type="date" name="fechaNac" id="fechaNac">
+                    </div>
+                </div>
+                <div class="boton"><button type="submit">Registrar</button></div>
+            </form>
+        </div>
+    </div>
+    <footer class="mensaje" id="mensaje"></footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/register.js"></script>
+</body>
+
+</html>

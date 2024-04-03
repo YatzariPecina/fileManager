@@ -5,6 +5,7 @@ const mensaje = document.getElementById('mensaje');
 
 function autenticarUsuario(event) {
     event.preventDefault();
+    console.log("Entro");
 
     $.ajax({
         url: './php/login.php',
@@ -14,6 +15,7 @@ function autenticarUsuario(event) {
             password: password.value,
         },
         success: function(response){
+            console.log(response);
             if (response == "200") {
                 window.location.href = "index.html";
             }else{

@@ -1,13 +1,24 @@
 <?php
 
-// Root de la aplicación a partir de http://localhost/
-define("APP_ROOT", "/xampp/Practica6/");
+/*
+ * Archivo que contiene parámetros de configuración de la aplicación.
+ * Es por buenas prácticas tener elementos que son variables en las aplicaciones
+ * en su respectivo archivo de configuración, esto para no tener que estar 
+ * modificando cada uno de los archivos en los que se hace referencia a estos
+ * parámetros de configuración.
+ */
 
-// Ruta física de la aplicación
-define("APP_PATH", "C:/xampp/htdocs/xampp/Practica6/");
+// Definimos la ruta física de donde se a ubicar los archivos de nuestra aplicación.
+define("APP_PATH", "C:/wamp64/www/pwe2024/practica07/");
 
-// Directorio donde se van a subir los archivos
-define("DIR_UPLOAD", "C:/xampp/htdocs/xampp/Practica6/archivos/");
+// La ruta relativa que corresonde al root de nuestra aplicación.
+define("APP_ROOT", "/pwe2024/practica07/");
+
+// Directorio donde se van a guardar los archivos subidos a la aplicación.
+define("DIR_UPLOAD", "C:/wamp64/archivos_subidos/");
+
+// Extensiones válidas para los archivos de fotos que se van a subir.
+$EXT_ARCHIVOS_FOTOS = ["png", "gif", "jpg", "jpeg"];
 
 // Extensiones de archivos con su correspondiente content-type.
 $CONTENT_TYPES_EXT = [
@@ -19,3 +30,8 @@ $CONTENT_TYPES_EXT = [
     "pdf" => "application/pdf",
     "bin" => "application/octet-stream"
 ];
+
+// Configuraciones correspondientes a la conexión a base de datos.
+define("DB_DSN", "mysql:host=127.0.0.1;port=3306;dbname=my_db;charset=utf8mb4;");
+define("DB_USERNAME", "root"); 
+define("DB_PASSWORD", "");
