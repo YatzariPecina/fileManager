@@ -6,20 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FileManager - Inicio</title>
     <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="nav">
-        <div id="clickedSession" class="session">
-            <label for="usuario" id="nombreUsuario">Iniciar sesion</label>
-        </div>
+        <ul class="session">
+            <li>
+                <p>Ajustes</p>
+                <ul class="menuDesplegable">
+                    <li><a href="login.html?change_password=true">Cambiar contraseña</a></li>
+                    <li id="clickedSession"><p id="nombreUsuario">Cerrar sesion</p></li>
+                </ul>
+            </li>
+        </ul>
         <img src="./img/account_avatar.svg" alt="">
-        <div class="menuDesplegable" id="menuDesplegable">
-            <a href="#">Cambiar contraseña</a>
-        </div>
     </div>
     <div class="contenedor">
         <div id="contenedorArchivos" class="contenedorArchivos">
@@ -41,7 +42,7 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 
 </html>

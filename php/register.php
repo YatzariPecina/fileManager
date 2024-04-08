@@ -1,7 +1,32 @@
 <?php
 require "db.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST["newPassword"]) && isset($_POST["id"])) {
+    $newPassword = $_POST["newPassword"];
+    $id_usuario = $_POST["id"];
+
+    $conection = getDbConnection();
+
+    //Preparar password
+    $passwordSalt = strtoupper(bin2hex(random_bytes(32)));
+    //Concatenar password con el salt
+    $passwordWithSalt = $newPassword . $passwordSalt;
+    //Encriptar el password
+    $passwordEncriptado = strtoupper(hash("sha512", $passwordWithSalt));
+
+    $sql = "UPDATE `usuarios` SET `password_encrypted`='" . $passwordEncriptado . "',`password_salt`= '" . $passwordSalt . "' WHERE id = '" . $id_usuario . "'";
+    $stmt = $conection->prepare($sql);
+
+    if($stmt->execute()){
+        http_response_code(200);
+        header('Content-Type: application/json');
+        echo json_encode("Se cambio la contraseña exitosamente");
+    }else{
+        http_response_code(400);
+        header('Content-Type: application/json');
+        echo json_encode("No se pudo cambiar la contraseña");
+    }    
+} else if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $datosParaRecibir = array("nombre", "apellidos", "username", "password", "genero", "fechaNac");
 
     $datosNoRecibidos = array();
@@ -53,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener los resultados
     $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    if(count($resultados) != 0){
+    if (count($resultados) != 0) {
         http_response_code(400);
         echo json_encode("Ya existe ese usuario");
         exit();

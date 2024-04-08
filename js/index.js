@@ -80,7 +80,6 @@ function mostrarUsuario() {
         url: "./php/login.php",
         type: "GET",
         success: function (response) {
-            console.log(response);
             if (response == "401") {
                 //Variable para regresar al login
                 window.location.href = "login.html";
