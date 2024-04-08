@@ -2,6 +2,7 @@ const registroForm = document.getElementById('registroForm');
 const password = document.getElementById('password');
 const confirmPass = document.getElementById('confirmacionPass');
 const estadoConfirm = document.getElementById('estadoConfirm');
+const mensaje = document.getElementById('mensaje');
 
 confirmPass.addEventListener("input", function (e){
     if(password.value === confirmPass.value){
@@ -13,8 +14,7 @@ confirmPass.addEventListener("input", function (e){
 
 registroForm.addEventListener("submit", function (e) { 
     e.preventDefault();
-
-    console.log("Empieza proceso de registro");
+    
     var formData = new FormData(this);
     formData.delete('confirmacionPass');
 
@@ -24,10 +24,12 @@ registroForm.addEventListener("submit", function (e) {
         data: formData,
         processData: false,
         contentType: false,
-        success: function (response) {
-            console.log(response);
+        success: function (xhr, response) {
             window.location.href = "login.html";
+        },
+        error: function(xhr, status, error) {
+            // Manejar errores de la solicitud
+            mensaje.innerHTML = "Error " + error + ": " + xhr.responseText;
         }
     });
-
 });

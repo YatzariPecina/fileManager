@@ -168,7 +168,6 @@ a:hover {
     align-items: center;
     padding: 20px 30px;
     background-color: white;
-    border: solid black 1px;
     border-radius: 15px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
@@ -177,22 +176,19 @@ a:hover {
     text-align: center;
     padding: 0 0 20px 0;
 }
+.contenedorRegister>form{
+    border: solid black 1px;
+    border-radius: 15px;
+}
 .cards{
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
-.cardLeft{
-    border: solid black 1px;
-}
-.cardRight{
-    border: solid black 1px;
-}
 .cardLeft, .cardRight{
     width: 300px;
     display: flex;
     flex-direction: column;
-    border: solid black 1px;
     padding: 10px;
 }
 .cardLeft label, .cardRight label{
@@ -200,6 +196,9 @@ a:hover {
 }
 .cardLeft input:focus, .cardRight input:focus{
     outline: none;
+}
+.menuDesplegable{
+    border: solid black 1px;
 }
 
 @media screen and (max-width: 768px) {
