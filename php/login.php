@@ -20,7 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logout"])) {
 
         if ($resultado) {
             //Iniciar la sesion
-            $_SESSION["usuario"] = $resultado;
+            $arrayDatos = array();
+            foreach($resultado as $key => $value){
+                if($value == null){
+                    $_SESSION["usuario"][$key] = "";
+                }else{
+                    $_SESSION["usuario"][$key] = $value;
+                }
+            }
             echo "200";
         } else {
             echo "401";

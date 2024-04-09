@@ -72,3 +72,30 @@ El usuario también debe poder modificar sus datos personales: nombre, apellidos
 >_Hacer Público/Privado un archivo_
 
 En index, se tiene el listado de los archivos más recientes subidos por el usuario, aquí se pide que se imlpemente la funcionalidad de los archivos que muestran ahí hacerlos públicos o privados según sea el caso. Para esto tendrá que implementar una llamada AJAX para ejecutar esta funcionalidad, puesto que ya está medio implementado además de diseñado para que sea con llamada AJAX la modificación del registro del archivo en DB para modificar el campo de es_publico.
+
+> _Mis Archivos_
+
+En esta sección, el usuario podrá ver todos los archivos que ha subido a la aplicación, con la diferencia que para poder ver los archivos, estos se deben consultar seleccionando el año-mes de los archivos que se quieren consultar.
+
+Para implementar la funcionalidad de consulta de los archivos por año-mes, se puede implementar con dos combo-box (input de tipo select-option), el primero para seleccionar el año (que muestra los años del 2023 al año actual el orden decreciente, es decir 2024, 2023) y el otro combo-box para seleccionar el mes. Después dar click en un boton de consultar y que se muestre el listado de los archivos.
+
+Por default al entrar a esta sección se deben mostrar los archivos del año y mes actual.
+
+Al mostrar los archivos también se deben mostrar las operaciones que se muestra en la página principal (index), que es el poder ver, descargar, hacer público/privado y borrar el archivo.
+
+< _De Otros_
+
+Para esta sección se implementa la consulta de los archivos de otros usuarios. Los archivos de otros usuarios solo deben poder listarse los que son públicos, con excepción de que si es un usuario admin, entonces podrá ver los archivos tanto publicos como los que no lo son.
+
+El proceso para consultar los archivos de otros usuarios es el siguiente: primero se debe buscar un usuario, ya sea por su nombre o por su username, después se debe mostrar el listado de los usuarios que se encontraron para la búsqueda, donde cada resultado encontrado debe ser un link para llevar a una página parecida a "Mis Archivos", es decir que listen los archivos del mes actual y se pueda consultar por año-mes (combobox).
+
+En la primera parte, la consulta de los usuario por su username o nombre, se debe tener un campo de texto para introducir el parámetro de búsqueda, si introduce un texto que tenga un '@' la consulta se realizará por username (recordando que los usernames son direcciones de email), de otra forma se debe consultar por el nombre. La consulta debe realizarse con una operación LIKE en DB, es decir, que si se introduce "luis%@gmail" debe regresar resultados como "luisroberto@gmail.com" "luisflores@gmail.com" "luisalbertofuentes@gmail.com"... Esto también aplica para la busqueda por nombre: si se introduce "luis" debe regresar resultados como "Luis Roberto Flores", "Jose Luis Alfaro", "Luis Carlos Rodríguez"...
+
+Para mostrar los archivos en esta sección, se listarán como en "Mis Archivos" y tener las operaciones de ver el archivo y descargar el archivo; pero si un usuario es Admin, también se debe mostrar la opción de borrar el archivo.
+
+Cabe mencionar que todas las operaciones de ver o descargar, así como borrar un archivo, deben registrarse en archivos_log_general en DB.
+
+Entregables
+Source code de su aplicación web en una carpeta ZIP
+Imágenes de evidencia de su aplicación funcionando en otra carpeta ZIP
+La revisión/evaluación de la práctica se realizará en clase

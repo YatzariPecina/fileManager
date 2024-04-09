@@ -19,24 +19,33 @@
             <h1>REGISTRO</h1>
             <form id="registroForm">
                 <div class="cards">
-                    <div class="cardLeft">
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" required>
-
-                        <label for="apellidos">Apellidos:</label>
-                        <input type="text" id="apellidos" name="apellidos" required>
-
+                    <div class="card" id="cardUsername">
                         <label for="username">Correo del usuario:</label>
                         <input type="email" id="username" name="username" required>
+                    </div>
 
+                    <div class="card" id="cardPassword">
                         <label for="password">Contraseña:</label>
                         <input type="password" id="password" name="password" required>
+                    </div>
 
+                    <div class="card" id="cardConfirmPass">
                         <label for="confirmacionPass">Confirmar el password:</label>
                         <input type="password" id="confirmacionPass" name="confirmacionPass" required>
                         <label id="estadoConfirm"></label>
                     </div>
-                    <div class="cardRight">
+
+                    <div class="card">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+
+                    <div class="card">
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" id="apellidos" name="apellidos" required>
+                    </div>
+
+                    <div class="card">
                         <label>Genero</label>
                         <div>
                             <input type="radio" name="genero" value="M" id="masculino" required>
@@ -46,12 +55,23 @@
                             <input type="radio" name="genero" value="X" id="no_especificar" required>
                             <label for="no_especificar">X</label>
                         </div>
+                    </div>
 
+                    <div class="card">
                         <label for="fechaNac">Fecha de nacimiento:</label>
                         <input type="date" name="fechaNac" id="fechaNac" required>
                     </div>
+
+                    <div class="card">
+                        <label for="grado">¿Qué eres?</label>
+                        <select name="grado" id="grado">
+                            <option value="-">- Seleccionar -</option>
+                            <option value='1'>Administrador</option>
+                            <option value='0'>Usuario</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="boton"><button type="submit">Registrar</button></div>
+                <div class="boton"><button type="submit" id="btnSubmit">Registrar</button></div>
             </form>
         </div>
     </div>

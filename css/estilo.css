@@ -205,14 +205,16 @@ a:hover {
 }
 
 .bodyRegister {
-    padding: 3% 10%;
+    padding: 3% 0;
 }
 
 .contenedorRegister {
     display: flex;
+    width: 60%;
     flex-direction: column;
     align-items: center;
-    padding: 20px 30px;
+    margin: auto;
+    padding: 10px 20px;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
@@ -222,34 +224,33 @@ a:hover {
     width: 100%;
     text-align: center;
     padding: 0 0 20px 0;
+    border-bottom: solid black 1px;
 }
 
 .contenedorRegister>form {
-    border: solid black 1px;
     border-radius: 15px;
 }
 
 .cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
-.cardLeft,
-.cardRight {
+.card {
+    min-width: 100px;
     width: 300px;
     display: flex;
     flex-direction: column;
     padding: 10px;
 }
 
-.cardLeft label,
-.cardRight label {
+.card label {
     padding: 5px 0 10px 0;
 }
 
-.cardLeft input:focus,
-.cardRight input:focus {
+.card input:focus{
     outline: none;
 }
 
@@ -257,9 +258,7 @@ a:hover {
     #contenedorSession>form {
         width: calc(100% - 20vw);
     }
-
-    .cardLeft,
-    .cardRight {
-        width: 100%;
+    .card{
+        width: 195px;
     }
 }
