@@ -24,6 +24,13 @@
         <img src="./img/account_avatar.svg" alt="">
     </div>
     <div class="contenedor">
+        <div class="subirArchivos">
+            <input type="text" id="nombreArchivo" placeholder="Nombre del archivo">
+            <label for="seleccionarArchivo">Seleccionar el archivo:</label>
+            <input type="file" id="file" placeholder="Ingresa el archivo">
+            <button onclick="subirArchivo()">Subir Archivo</button>
+            <div id="mensaje"></div>
+        </div>
         <div id="contenedorArchivos" class="contenedorArchivos">
             <h2>ADMINISTRADOR DE ARCHIVOS</h2>
             <table class="listaArchivos" id="tablaArchivos">
@@ -33,13 +40,6 @@
                     <th>Borrar</th>
                 </tr>
             </table>
-        </div>
-        <div class="subirArchivos">
-            <input type="text" id="nombreArchivo" placeholder="Nombre del archivo">
-            <label for="seleccionarArchivo">Seleccionar el archivo:</label>
-            <input type="file" id="file" placeholder="Ingresa el archivo">
-            <button onclick="subirArchivo()">Subir Archivo</button>
-            <div id="mensaje"></div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -4,6 +4,9 @@ const confirmPass = document.getElementById('confirmacionPass');
 const estadoConfirm = document.getElementById('estadoConfirm');
 const mensaje = document.getElementById('mensaje');
 
+const labelUsuario = document.getElementById('nombreUsuario');
+const contenedorUsuario = document.getElementById('clickedSession');
+
 const urlParams = new URLSearchParams(window.location.search);
 
 confirmPass.addEventListener("input", function (e) {
@@ -13,6 +16,47 @@ confirmPass.addEventListener("input", function (e) {
         estadoConfirm.innerHTML = "No es igual";
     }
 });
+
+$(document).ready(function () {
+    mostrarUsuario();
+});
+
+function mostrarUsuario() {
+    $.ajax({
+        url: "./php/login.php",
+        type: "GET",
+        success: function (response) {
+            if (response == "401") {
+                //Variable para regresar al login
+                window.location.href = "login.html";
+            } else {
+                //Mandar el nombre a la ventana
+                labelUsuario.innerHTML = "Cerrar sesion";
+                contenedorUsuario.onclick = function () {
+                    cerrarSesion();
+                };
+
+                esAdmin = response.esAdmin;
+                if (esAdmin) {
+                    isAdmin();
+                }
+            }
+        }
+    });
+}
+
+function cerrarSesion() {
+    $.ajax({
+        url: './php/login.php',
+        type: 'POST',
+        data: { logout: true },
+        success: function (response) {
+            if (response == "200") {
+                window.location.href = "./login.html";
+            }
+        }
+    });
+}
 
 registroForm.addEventListener("submit", registrarUsuario);
 

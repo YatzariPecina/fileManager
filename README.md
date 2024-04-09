@@ -51,7 +51,7 @@ Que el alumno demuestre el dominio de programación del lado del servidor para r
 
 **Desarrollo**
 
->_Registro de nuevos usuarios_
+>> _Registro de nuevos usuarios_
 
 Crear una página para que los nuevos usuarios puedan registrarse, esto es pedir los datos necesarios para su registro: nombre, apellidos, username (que para nuestro caso debe ser una dirección de correo electrónico), password, confirmación del password, genero (M = Masculino, F = Femeninio, X = Prefiero no especificar) y fecha de nacimiento. 
 
@@ -61,11 +61,11 @@ Todos los campos son obligatorios, así que tiene que validar tanto del lado del
 
 Es importante que al momento de guardar en base de datos los datos del usuario, el password del usuario se guarde cifrado de la siguiente forma: generar el password salt (64 caracteres aleatorios), al password en texto plano concatenarle al final el salt generado, al password en texto plano concatenado con el salt generarle el SHA512 y este será el password_encrypted.
 
-> _Cambiar contraseña_
+>> _Cambiar contraseña_
 
 Agregar una opción para que una vez que el usuario ya haya iniciado sesión, este pueda cambiar la contraseña. Recordando que la contraseña en base de datos se guarda cifrada.
 
-> _Modificar datos personales_
+>> _Modificar datos personales_
 
 El usuario también debe poder modificar sus datos personales: nombre, apellidos, genero y fecha de nacimiento. Tenga en cuanta que todos los datos son obligatorios, además que se tienen que validar tanto del lado del cliente como del lado del servidor (código PHP); además así como en el registro de nuevos usuarios, también se debe validar que no se hayan ingresado puros caracteres de espacios en blanco (' ') y al guardar hacer trim() para quitar los espacios en blanco que se hayan ido de más.
 

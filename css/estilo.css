@@ -175,6 +175,7 @@ a:hover {
 }
 
 .contenedor {
+    border: solid black 1px;
     padding: 10px;
     display: flex;
     justify-content: center;
